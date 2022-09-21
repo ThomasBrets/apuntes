@@ -42,3 +42,6 @@ ___
 > jugando sin carta y con cara de all-in
 
 [Documentacion markdown](https://www.google.com/url?sa=i&url=https%3A%2F%2Ftodo-memes.com%2Fmeme-de%2FPuto-el-que-lee-566848&psig=AOvVaw1NwFZ4q6XWwLRHQGumdmXk&ust=1663802668689000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCKCEno_CpPoCFQAAAAAdAAAAABAS)
+
+
+anular \*MarkDown*
