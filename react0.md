@@ -117,4 +117,10 @@ export default App;
 ```
 Aunque tu componente sea básico, es funcional. Ahora, deberás incorporarlo en el DOM usando **ReactDOM.**
 
+**Importante:**
+Dependiendo de la plataforma, necesitaremos características específicas de React. Por ejemplo, si vamos con un **browser** e interactuar con el DOM, tiene sentido usar **ReactDom.** En cambio, si desarrollamos en **mobile**, necesitaremos otra librería. 
 
+**ReactDOM:**
+Dentro de React, la libreria ReactDOM nos permite crear aplicaciones ***Web.*** El paquete provee métodos específicos del DOM.
+
+En el archivo `index.js`, imortá tu nuevo componente y reemplazalo en la variable `app`
