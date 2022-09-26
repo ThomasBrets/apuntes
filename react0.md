@@ -1,7 +1,11 @@
 # React 0
+
 ---
+
 # Introducción
-___
+
+---
+
 ## Objetivos
 
 En ese WS aprenderas a implementar **React** y su sintaxis.
@@ -26,11 +30,16 @@ Por ejemplo, en un sitio Web tradicional, tendriamos un componente para la **sid
 
 Si usaramos HTML, tendriamos que crear cada bloque. En cambio, React nos permite **reutilizar cada componente.**
 
-**importante:** Al nombrar un componente, es una convencion usar **Mayùscula**. De lo contrario ¡No funciona!
+**⚠️importante:** Al nombrar un componente, es una convencion usar **Mayùscula**. De lo contrario ¡No funciona!
 
 ### JSX
 
 Te permite armar bloques de código visuales usando tus conocimientos de HTML. Sin embargo, **no es HTML: Es una extension de la sintaxis de JavaScript.**
+
+JSX permite agregar muchas **expresiones entre llaves.** Si una expresión retorna valores como `2+2` o `words.join(“ “)`, podremos incluirlas entre llaves.
+
+**⚠️importante:** No podrás incluir `statements`.
+JSX se traducirá en la invocación de la Función `createElement()` de React, con lo cual cada valor que pongamos se podría considerar como argumento de esa Función. No podemos agregar **bloques multilínea** (statements) como `if` y `for` como parámetros de una Función.
 
 Si bien no es obligatorio usar jsx en React, es util para escribir grandes bloques de código.
 
@@ -88,19 +97,19 @@ cd my-app
 npm start
 ```
 
-**Nota:** En la primera línea `npx` no es un error de escritura. Es una herramienta de ejecución de paquetes que viene con `npm 5.2+`.
+**⚠️Nota:** En la primera línea `npx` no es un error de escritura. Es una herramienta de ejecución de paquetes que viene con `npm 5.2+`.
 
 **Create React App** no se encarga de la lógica de **backend** o de bases de datos; tan solo crea un flujo de construcción para **fontend**, de manera que lo puedes usar con **cualquier backend**. Para ello internamente usa **Babel** y **Webpack**.
 
-
 # React app
+
 ---
 
 ## Primer Componente
 
 En esta sección, deberás generar un componente principal llamado `App.jsx` dentro de la carpeta `src`.
 
-**Nota:** En muchos proyectos, encontrarás que el archivo principal se llama `Main`. Sin embargo, en la actualidad, los proyectos modernos de **React** suelen tener un archivo `App` como componente principal.
+**⚠️Nota:** En muchos proyectos, encontrarás que el archivo principal se llama `Main`. Sin embargo, en la actualidad, los proyectos modernos de **React** suelen tener un archivo `App` como componente principal.
 
 Para avanzar seguí estos pasos:
 
@@ -120,7 +129,7 @@ export default App;
 
 Aunque tu componente sea básico, es funcional. Ahora, deberás incorporarlo en el DOM usando **ReactDOM.**
 
-**Importante:**
+**⚠️Importante:**
 Dependiendo de la plataforma, necesitaremos características específicas de React. Por ejemplo, si vamos con un **browser** e interactuar con el DOM, tiene sentido usar **ReactDom.** En cambio, si desarrollamos en **mobile**, necesitaremos otra librería.
 
 **ReactDOM:**
@@ -248,7 +257,7 @@ En esta sección, deberás llevar el `header` del componente `App` a un nuevo co
 
 Ahora, generá una carpeta llamada `components` y dentro de ella un archivo para el componente `Header.jsx`(por convención los componentes se ponen con **Mayúscula**) que retorne el **JSX** del `header` actual.
 
-**Nota:** Si escribis **rafce** generará el componente automáticamente.
+**⚠️Nota:** Si escribis **rafce** generará el componente automáticamente.
 
 ```JavaScript
 const Header = () => {
@@ -262,25 +271,30 @@ const Header = () => {
 
 Luego, dentro del componente `App.jsx`, importa el componente `Header` y llámalo dentro del **JSX** para que genere un nuevo nodo en base a tu componente. La vista será igual que la anterior.
 
-#### Nota
-Con React podremos agregar navegación, manejo de ususarios, *dark/light mode* y más. Sobre todo podremos convertir componentes en múltiples subcomponentes. Cada uno tendrá una lógica completa. Esto es lo que hace que tu aplicación sea super poderosa.
+#### ⚠️Nota
+
+Con React podremos agregar navegación, manejo de ususarios, _dark/light mode_ y más. Sobre todo podremos convertir componentes en múltiples subcomponentes. Cada uno tendrá una lógica completa. Esto es lo que hace que tu aplicación sea super poderosa.
 
 # Render Dinámico
+
 ---
 
 ## List & JSX
+
 Hasta ahora, solo estabas operando la información del HTML. En esta sección trabajarás con el contenido del archivo `menu.json`.
 
 Ahora veamos, como listar elementos idénticos en React.
 
 ### Listas en React
-JSX facilita la escritura de los componentes. Ofrece ayudas para situaciones comunes coo listar elementos iguales. 
+
+JSX facilita la escritura de los componentes. Ofrece ayudas para situaciones comunes coo listar elementos iguales.
 
 ```JavaScript
 const list = ["item1", "item2", "item3"];
 ```
 
 Ahora, volvé a tu proyecto y seguí estos pasos:
+
 1. Declará la lista antes del `return` en App.
 2. Agregalo al JSX usando la sintaxis de llaves. Por ejemplo:`{ list }`.
 3. Hacé una prueba con estos elementos. Inspeccioná el HTML final desde el browser:
@@ -292,9 +306,11 @@ const list = [<h1>Item 1</h1>, <p>Item 2</p>, <strong>Item 3</strong>];
 React no solo agrega los ítems del Arreglo, sino que también interpreta JSX en distintos lugares del archivo JavaScript.
 
 ### Transformar la información
+
 El archivo `menu.json` contiene un **Arreglo de comidas y de bebidas.** Ahora, deberás transformar esa información en elementos JSX para, luego, pasarlo al DOM.
 
 Es decir, queremos transformar el siguiente bloque de código:
+
 ```JavaScript
  {
       "name": "Espresso",
@@ -302,7 +318,9 @@ Es decir, queremos transformar el siguiente bloque de código:
       "price": 100
     }
 ```
+
 En esto:
+
 ```JavaScript
 <li>
     <strong>Espresso</strong>
@@ -310,26 +328,31 @@ En esto:
     <em>$100</em>
 </li>
 ```
-**Nota:** Podrás usar la Función `map` para transformar cada Objeto con información en un bloque JSX.
+
+**⚠️Nota:** Podrás usar la Función `map` para transformar cada Objeto con información en un bloque JSX.
 
 Ahora, seguí estos pasos:
+
 1. Primero, dentro del componente `App` hay que desestructurar ya que sabemos que **drink y food son arreglos dentro del objeto menú.**
+
 ```JavaScript
   const { drinks, food } = menu;
 ```
+
 2. Luego, dentro de la carpeta `components`, crea un archivo con el componente **drink** y otro con el componente **food**.
 
 3. En cada uno, usá el método `map` para transformar la información del Arreglo en elementos JSX.
 
 4. Usá la sintaxis de llaves `({})` para completar los textos con su equivalente del `.json`.
 
-**importante:** Asegurate de que la Función enviada como parámetro del `map` retorne el JSX.
+**⚠️importante:** Asegurate de que la Función enviada como parámetro del `map` retorne el JSX.
 
 5. Guarda el arreglo final en una variable.
 
 6. Reemplazá la lista generada por el `<ul>` por la lista creada con la data del `.json`.
 
-#### solución 
+#### solución
+
 ```JavaScript
 const drinks = drinks.map((drink) => (
     <li>
@@ -339,6 +362,7 @@ const drinks = drinks.map((drink) => (
     </li>
   ));
 ```
+
 **También podemos desestructurar:**
 
 ```JavaScript
@@ -354,7 +378,7 @@ const drinks = drinks.map(({name, description, price}) => (
 Si todo funciona correctamente, deberías ver una nueva bebida `Flat white`. Esta figuraba antes en el archivo `menu.json`, pero no en el maquetado.
 
 ## Props
----
+
 Antes de avanzar, analizá el HTML para descubrir patrones. En caso de encontrarlos, generá nuevos componentes con esos elementos.
 
 Los componentes pueden generarse a partir de elementos que tengan la misma estructura y, por lo tanto, sean reutilizables.
@@ -365,3 +389,167 @@ En esta sección, en la carpeta `components`, deberás **generar un componente n
 
 **Recorá:** Este proceso es similar al que hiciste con el componente `Header`.
 
+Luego, deberás informar a cada insatncia cual es su valor. Para eso, deberás usar **props.**
+
+#### ¿Que Son Sas _Props_ y Cómo Funcionan?
+
+Las props (Propiedades) pueden pensarse como argumentos de una Función. Sin embargo, su sintaxis es similar a la de los atributos HTML.
+
+A diferencia de una Función clásica, recibirás las props agrupadas en un solo Objeto como parámetro de la Función.
+
+#### Solución
+
+```JavaScript
+const Item = (props) => {
+  return (
+    <li>
+      <strong>{props.name}</strong>
+      <small>{props.description}</small>
+      <em>{props.price}</em>
+    </li>
+  );
+};
+```
+
+**También podemos desestructurar:**
+
+```JavaScript
+const Item = ({ name, description, price }) => {
+  return (
+    <li>
+      <strong>{name}</strong>
+      <small>{description}</small>
+      <em>{price}</em>
+    </li>
+  );
+};
+```
+
+## Refactorizar
+
+### _Props_ Dinámicas: ¿Sí o No?
+
+Una manera de refactorizar tu código es usar **props dinámicas.**
+
+En este caso, tanto **bebidas** como **comidas** comparten las mismas propiedades (nombre, descripción, precio) y, por esta razón, podrías generar las props de manera dinámica.
+
+#### Por ejemplo:
+
+```JavaScript
+{drinks.map((drink) => <Item {...drink} />)}
+```
+
+#### ⚠️importante:
+
+Si bien simplifica el código, esta práctica es una desventaja cuando estás empezando porque no te permite ver qué Propiedades pasaste como props. Es decir, invisibiliza la información.
+
+Usá tu criterio como _developer_ y ajustá cada práctica al proyecto en el que estés trabajando.
+
+## Última abstracción
+
+En esta sección, jugarás con React y su sintaxis.
+
+Ahora, en la carpeta `components`, reemplaza los dos componentes **Drinks** y **Food**, por un solo componente `List`.
+
+Deberás generar un componente `List` que tiene que iterar un Arreglo, pasado por **props.** Luego, invocá a `Item` con la data de cada uno de los elementos del Arreglo.
+
+#### Solución en List
+
+```JavaScript
+const List = ({list}) => {
+  return (
+    <div>
+      <ul>
+        {list.map(({name, description, price}) => {
+          return (
+            <Item
+            key={name}
+              name={name}
+              description={description}
+              price={price}
+            />
+          );
+        })}
+      </ul>
+    </div>
+  )
+}
+```
+
+#### Solución en App
+```JavaScript
+import React from "react";
+import menu from "./menu.json";
+import Header from "./components/Header";
+import List from "./components/List";
+
+
+const App = () => {
+  const { drinks, food } = menu;
+  return (
+    <div>
+      <Header />
+      <main>
+        <h3>Drinks</h3>
+        <List list={drinks} />
+        <h3>Food</h3>
+        <List list={food} />
+      </main>
+    </div>
+  );
+};
+
+export default App;
+```
+
+Le pasamos al componente `List`, las listas como props y luego las **mapeamos** dentro de dicho componente.
+
+# Extra Credit
+---
+## Componentes Externos
+Como desafío final, en esta sección deberás incorporar **íconos** a tu menú.
+
+Podrás encontrarlo en un paquete **npm** generado por la comunidad React.
+
+Para sumar íconos a tu proyecto, seguí estos pasos.
+
+1. Instalá `React Icons` como dependencia:
+```JavaScript
+npm i react-icons
+```
+📚 **React Icons** es una librería que agrupa a los proveedores de íconos más conocidos en un solo paquete. ¡Hay muchos íconos para elegir!
+
+2. Reemplazá el ícono del café *hard codeado* ☕ por uno importado de la librería. Para eso, requerí `FaCoffee` de Font Awesome.
+
+```JavaScript
+import { FaCoffee } from "react-icons/fa";
+.
+.
+.
+
+<FaCoffee />
+```
+
+3. Agregá un ícono a cada ítem de la lista. Recomendamos que utilices el ícono `faArrowRight`➡️.
+```JavaScript
+import React from "react";
+import { FaArrowRight } from "react-icons/fa"; //Requerimos el ícono.
+
+const Item = ({ name, description, price }) => {
+  return (
+    <li>
+      <FaArrowRight /> //Ponemos una flecha a cada ítem.
+      <strong>{name}</strong>
+      <small>{description}</small>
+      <em>{price}</em>
+    </li>
+  );
+};
+
+export default Item;
+```
+
+# Conclusión
+En este Workshop armaste un menú para una cafetería con HTML y JavaScript. Para eso, creaste componentes nuevos usando React y te familiarizaste con la sintaxis de JSX.
+
+Ahora, avanzá al siguiente módulo para seguir profundizando tus conocimientos.
